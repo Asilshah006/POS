@@ -1,0 +1,203 @@
+<OperatorWindow>:
+    id:main_win
+    orientation:"vertical"
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            size:self.size
+            pos:self.pos
+
+    BoxLayout:
+        id:header
+        size_hint_y:None
+        height : 50
+        canvas.before:
+            Color:
+                rgba:(0,0,.45,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+        Label:
+            text: "Khalid Autos"
+            size_hint_x: 0.9
+            bold:True
+            color:(1,1,1,1)
+        Button:
+            id:loggedin_user
+            text:"jdoe"
+            size_hint_x: 0.1
+            color:(1,1,1,1)
+            background_color:(0,0,0.45,1)
+            background_normal: ""
+            underline: True
+            on_release: root.logout_op()
+
+    BoxLayout:
+        id:current
+        size_hint_y:None
+        height:50
+
+        Button:
+            text:"Current_Item"
+            background_color:(0,0,.45,1)
+            background_normal:""
+            size_hint_x: 0.4
+        Button:
+            id:cur_product
+            text:"Default Product"
+            background_color:(0,0,.58,1)
+            background_normal:""
+        Button:
+            id:cur_price
+            text:"0.00"
+            background_color:(0,0,.70,1)
+            background_normal:""
+            size_hint_x: 0.2
+
+    BoxLayout:
+        padding:10
+        BoxLayout:
+            id: product_details
+            orientation: "vertical"
+            size_hint_x: 0.8
+            spacing:10
+            BoxLayout:
+                id:product_labels
+                size_hint_y: None
+                height: 50
+                canvas.before:
+                    Color:
+                        rgba:(0,0,0.45,1)
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                Button:
+                    text: "Qty"
+
+                    size_hint_x:0.1
+
+                Button:
+                    text: "Product Code"
+                    size_hint_x:0.3
+
+                Button:
+                    text: "Disc"
+                    size_hint_x:0.1
+
+                Button:
+                    text: "Disc%"
+                    size_hint_x:0.1
+
+                Button:
+                    text: "VAT"
+                    size_hint_x:0.1
+
+                Button:
+                    text: "Price"
+                    size_hint_x:0.1
+
+                Button:
+                    text: "Product Total"
+                    size_hint_x:0.2
+            BoxLayout:
+                id:product_input
+                size_hint_y:None
+                height: 30
+                spacing:5
+                TextInput:
+                    id: qty_input
+                    size_hint_x:0.1
+
+
+                TextInput:
+                    id: code_input
+                    size_hint_x:0.3
+                    focus: True
+                    multiline: False
+                    on_text_validate: root.update_purchases()
+
+                TextInput:
+                    id: disc_input
+                    size_hint_x:0.1
+
+                TextInput:
+                    id: disc_perc_input
+                    size_hint_x:0.1
+
+                TextInput:
+                    id: after_input
+                    size_hint_x:0.1
+
+                TextInput:
+                    id: price_input
+                    size_hint_x:0.1
+
+                TextInput:
+                    id: total_input
+                    size_hint_x:0.2
+
+            BoxLayout:
+                id:add_to_cart
+                orientation: "vertical"
+                BoxLayout:
+                    size_hint_y:None
+                    height:30
+                    canvas.before:
+                        Color:
+                            rgba:(0,0,.5,1)
+                        Rectangle:
+                            size:self.size
+                            pos:self.pos
+
+                    Label:
+                        text:"Code"
+                        size_hint_x:0.1
+                    Label:
+                        text:"Product Code"
+                        size_hint_x:0.3
+                    Label:
+                        text:"Model"
+                        size_hint_x:0.1
+                    Label:
+                        text:"Disc"
+                        size_hint_x:0.1
+                    Label:
+                        text:"Qty"
+                        size_hint_x:0.1
+                    Label:
+                        text:"Price"
+                        size_hint_x:0.1
+                    Label:
+                        text:"Total Price"
+                        size_hint_x:0.1
+
+                GridLayout:
+                    padding: 10
+                    id:Products
+                    cols: 1
+        BoxLayout:
+            id: preview
+            orientation: "vertical"
+            size_hint_x: 0.2
+
+            TextInput:
+                id: recipt_preview
+                readonly: True
+                text: 'Khalid Autos\nStation Road\nSukkur,\n\nTel: (555)-123-456\nRecipt No: \nDate: \n'
+
+    BoxLayout:
+        id:footer
+        size_hint_y:None
+        height: 30
+        canvas.before:
+            Color:
+                rgba:(0,0,.45,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+        Label:
+            text: "Maintained By Syed Asil Ali"
